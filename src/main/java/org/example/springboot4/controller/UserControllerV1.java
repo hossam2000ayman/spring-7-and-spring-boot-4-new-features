@@ -1,10 +1,7 @@
 package org.example.springboot4.controller;
 
 import org.example.springboot4.service.auth.AuthenticationProvider;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,18 +17,18 @@ public class UserControllerV1 {
     }
 
     @GetMapping("names")
-    public List<String> getUsers() {
+    public List<String> getUsers(@PathVariable String version) {
         return Arrays.asList("mazen", "amr", "abdelgawad");
     }
 
 
     @PostMapping("/login")
-    public String login() {
+    public String login(@PathVariable String version) {
         return authenticationProvider.login();
     }
 
     @GetMapping(value = "/login", version = "1.2+")
-    public String loginV2() {
+    public String loginV2(@PathVariable String version) {
         return authenticationProvider.login() + "__ v2";
     }
 
