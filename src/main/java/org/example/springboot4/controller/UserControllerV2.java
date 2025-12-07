@@ -10,12 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/users")
-public class UserController {
+@RequestMapping(value = "api/{version}/users", version = "2")
+public class UserControllerV2 {
 
     private final AuthenticationProvider authenticationProvider;
 
-    public UserController(AuthenticationProvider authenticationProvider) {
+    public UserControllerV2(AuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
     }
 
